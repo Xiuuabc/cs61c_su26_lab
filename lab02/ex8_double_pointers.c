@@ -28,12 +28,12 @@ int main() {
 
   free(student1_ptr);
 
-  student_t *student2_ptr = malloc(sizeof(student_t));
+  student_t *student2_ptr;
 
   create_student_t_2(&student2_ptr, 6);
 
   printf("Student 2's ID: %d\n", student2_ptr->id);
-
+  
   free(student2_ptr);
 
   return 0;

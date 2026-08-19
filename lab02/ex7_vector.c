@@ -40,32 +40,43 @@ vector_t *bad_vector_new() {
 vector_t *vector_new() {
     /* Declare what this function will return */
     vector_t *retval;
+    
+    //[return a pointer which point to a struct named vector_t]
+    //vector retval:return a struct
+    //vector vector_new():return a struct
+    //vector *vector_new():return a pointer which point to a struct nemaed vector_t
 
     /* First, we need to allocate memory on the heap for the struct */
-    retval = /* YOUR CODE HERE */
+    retval = malloc(sizeof(vector_t));/* YOUR CODE HERE */
+    
+    //[due to the pointer retval should point to a struct,we malloc the memory whose size of vector_t ]
 
     /* Check our return value to make sure we got memory */
-    if (/* YOUR CODE HERE */) {
+    if (retval == NULL /* YOUR CODE HERE */) {
         allocation_failed();
     }
 
     /* Now we need to initialize our data.
        Since retval->data should be able to dynamically grow,
        what do you need to do? */
-    retval->size = /* YOUR CODE HERE */;
-    retval->data = /* YOUR CODE HERE */;
-
+    retval->size = 1 /* YOUR CODE HERE */;
+    retval->data = malloc(sizeof(int));  /* YOUR CODE HERE */
+    
+    //retval -> vector.data -> ?(address) , so it should be filled in an address
+    
     /* Check the data attribute of our vector to make sure we got memory */
-    if (/* YOUR CODE HERE */) {
+    if (retval->data == NULL/* YOUR CODE HERE */) {
         free(retval);				//Why is this line necessary?
         allocation_failed();
     }
 
     /* Complete the initialization by setting the single component to zero */
-    /* YOUR CODE HERE */ = 0;
+    /* YOUR CODE HERE */*(retval->data)= 0;
+    
+    // or retval->data[0];
 
     /* and return... */
-    return NULL; /* UPDATE RETURN VALUE */
+    return retval; /* UPDATE RETURN VALUE */
 }
 
 /* Return the value at the specified location/component "loc" of the vector */
@@ -88,7 +99,11 @@ int vector_get(vector_t *v, size_t loc) {
 /* Free up the memory allocated for the passed vector.
    Remember, you need to free up ALL the memory that was allocated. */
 void vector_delete(vector_t *v) {
-    /* YOUR CODE HERE */
+    
+     free(v->data);
+     free(v);/* YOUR CODE HERE */
+
+     //we malloc two heaps in a struct ,so we need to free two heaps.
 }
 
 /* Set a value in the vector, allocating additional memory if necessary. 
