@@ -5,15 +5,15 @@ void add_one(int input) {
 }
 
 // TODO: create a pointer to input
-void add_one_pointer(______ input) {
+void add_one_pointer(int *input) {
   // TODO: add one to the integer that input points to
-  ________ += 1;
+  *input += 1;
 }
 
 // TODO: create a pointer to a pointer to input
-void add_one_double_ptr(______ input) {
+void add_one_double_ptr(int** input) {
   // TODO: add one to the integer that input doubly points to
-  ________ += 1;
+  **input += 1;
 }
 
 int main() {
@@ -25,6 +25,7 @@ int main() {
 
   // This line should print 5
   // Why doesn't this work?
+  // beacause the funciton 
   printf("add_one: %d\n", x);
 
   // Let's try using add_one_pointer
@@ -32,16 +33,16 @@ int main() {
   // TODO: use add_one_pointer to increment x
   // Hint: compare the type of x with the type of the argument
   //       for add_one_pointer
-  add_one_pointer(______);
+  add_one_pointer(&x);
 
   // This line should print 6
   printf("add_one_pointer: %d\n", x);
   
   // TODO: Let's save the pointer to x in y
-  ______ y = ______;
+  int* y = &x;
 
   // TODO: use add_one_double_ptr to increment x again, using the pointer we just made
-  add_one_double_ptr(______);
+  add_one_double_ptr(&y);
 
   // This line should print 7
   printf("add_one_double_ptr: %d\n", x);
